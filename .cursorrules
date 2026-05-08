@@ -1,0 +1,25 @@
+# Cursor Rules for Fundamental Trader Agent
+
+You are working on a production-style AI trading agent that ingests macro news, evaluates XAU/USD sentiment with Gemini, deduplicates events with Redis, and routes approved signals to LMAX.
+
+Core behavior:
+- Preserve the pipeline order: webhook validation -> Redis idempotency lock -> LLM sentiment classification -> optional LMAX execution.
+- Never hard-code API keys, account ids, secrets, tokens, or credentials.
+- Read runtime configuration from environment variables and keep `.env` out of git.
+- Prefer small, auditable changes. Trading code should fail closed when credentials, auth, or order validation fail.
+- Keep JSON logs structured and avoid printing secret values.
+- Treat LMAX order payloads as high-risk. Log order ids, side, quantity, and status, but never log bearer tokens or secrets.
+- Use `gemini-2.5-flash-lite` by default unless `GEMINI_MODEL` is explicitly configured.
+- Use `IMMEDIATE_OR_CANCEL` for market order `time_in_force` unless explicitly configured otherwise.
+
+Cursor workflow:
+- Before editing, inspect the touched module and surrounding call path.
+- When changing behavior, update README or docs if the public interface, environment variables, Docker flow, metrics, or benchmark notes change.
+- When adding dependencies, update `requirements.txt`.
+- For debugging, improve observability instead of suppressing exceptions.
+- Prefer deterministic test payloads for examples.
+
+Security guardrails:
+- Do not create commits containing `.env`, private keys, account credentials, or generated tokens.
+- Do not paste secrets into README, docs, examples, tests, or logs.
+- Use placeholders such as `your_gemini_api_key_here`.
