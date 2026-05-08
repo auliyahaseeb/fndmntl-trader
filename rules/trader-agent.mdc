@@ -1,0 +1,25 @@
+---
+description: Rules for the Fundamental Trader Agent codebase
+globs:
+  - "**/*.py"
+  - "Dockerfile"
+  - "docker-compose.yaml"
+  - "requirements.txt"
+  - "README.md"
+alwaysApply: true
+---
+
+# Fundamental Trader Agent
+
+This project is an AI trading agent for macro news driven XAU/USD execution.
+
+Follow these rules:
+
+- Keep the agent Cursor-ready and public-repository-safe.
+- Never hard-code secrets or example real credentials.
+- Use environment variables for Gemini, LMAX, and Redis configuration.
+- Keep structured JSON logs useful for debugging without leaking secrets.
+- Preserve the main pipeline in `src/main.py`: news webhook, Redis idempotency, Gemini sentiment, LMAX execution.
+- Treat `src/lmax_client.py` as high-risk execution code. Use explicit payload fields and log LMAX response bodies on rejection.
+- Keep Docker runnable with `docker compose up --build`.
+- Update documentation when environment variables, run commands, evaluation metrics, or behavior change.
