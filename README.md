@@ -8,6 +8,30 @@ The agent is specialized for macroeconomic news that affects spot gold. It focus
 
 This was chosen as the top priority because trading agents need more than model output. They need a controlled execution pipeline with idempotency, authentication, payload validation, and useful logs when something fails.
 
+## Console LOG
+
+
+<img width="1265" height="272" alt="image" src="https://github.com/user-attachments/assets/ee4cfe48-0193-42b4-9a30-358ce635c852" />
+
+
+## LMAX Trade
+
+
+
+
+<img width="853" height="136" alt="Screenshot 2026-05-08 100035" src="https://github.com/user-attachments/assets/9d6bd4cf-63dc-46ee-9ea6-8c965594fb75" />
+
+
+
+
+
+
+
+
+
+
+
+
 ## Capabilities
 
 - FastAPI webhook endpoint at `POST /webhook/news`.
