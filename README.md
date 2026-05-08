@@ -38,13 +38,6 @@ This project includes:
 
 These files tell Cursor how to work safely in this repository. The rules emphasize secret hygiene, deterministic trading flow, structured logs, Docker readiness, and careful handling of LMAX execution code.
 
-Open the project folder in Cursor:
-
-```powershell
-cd C:\Users\hasee\Music\trader-agent\trd
-cursor .
-```
-
 ## Environment Variables
 
 Create a local `.env` file from the example:
